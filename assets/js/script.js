@@ -151,6 +151,7 @@ $(document).ready(function () {
         if (pastCities[0]) {
             let queryURL = buildURLFromId(pastCities[0].id);
             searchWeather(queryURL);
+        } 
     }
  
     // Click handler for search button
