@@ -9,5 +9,5 @@ Languages used:
 * HTML
 * CSS
 
-Deployed Application: https://cassie-s.github.io/weather-dashboard/
+Deployed Application: https://weather-dashboard-xv87.onrender.com/
 
