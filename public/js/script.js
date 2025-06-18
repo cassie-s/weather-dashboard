@@ -1,7 +1,15 @@
-$(document).ready(function () {
+let apiKey;
 
-    // OpenWeather API
-    const apiKey = 'ae61bd15bf70606d41a016142425f78e';
+$(document).ready(function () {
+  fetch('/apikey')
+    .then(res => res.json())
+    .then(data => {
+      apiKey = data.apiKey;
+      init(); // Call your weather logic after API key is ready
+    });
+});
+    
+function init() {
 
     // Selectors for HTML elements to display weather information
     const cityEl = $('h2#city');
@@ -120,7 +128,7 @@ $(document).ready(function () {
             // Call OpenWeather API OneCall with lat and lon to get the UV index and 5 day forecast
             let lat = response.coord.lat;
             let lon = response.coord.lon;
-            let queryURLAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+            let queryURLAll = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
             $.ajax({
                 url: queryURLAll,
                 method: 'GET'
@@ -187,5 +195,4 @@ $(document).ready(function () {
 
     // Display weather for last searched city
     displayLastSearchedCity();
-
-});
+};
